@@ -1,0 +1,50 @@
+[
+  {
+    "feature": "Intersection",
+    "present_count": 37007,
+    "absent_count": 462993,
+    "present_pct": 7.4,
+    "absent_pct": 92.6,
+    "odds_ratio": 0.006
+  },
+  {
+    "feature": "Feux de circ.",
+    "present_count": 74035,
+    "absent_count": 425965,
+    "present_pct": 14.81,
+    "absent_pct": 85.19,
+    "odds_ratio": 0.03
+  },
+  {
+    "feature": "Passage pi\u00e9ton",
+    "present_count": 56253,
+    "absent_count": 443747,
+    "present_pct": 11.25,
+    "absent_pct": 88.75,
+    "odds_ratio": 0.016
+  },
+  {
+    "feature": "Stop / C\u00e9der",
+    "present_count": 14063,
+    "absent_count": 485937,
+    "present_pct": 2.81,
+    "absent_pct": 97.19,
+    "odds_ratio": 0.001
+  },
+  {
+    "feature": "Passage \u00e0 niv.",
+    "present_count": 4320,
+    "absent_count": 495680,
+    "present_pct": 0.86,
+    "absent_pct": 99.14,
+    "odds_ratio": 0.0
+  },
+  {
+    "feature": "Point d'int\u00e9r\u00eat",
+    "present_count": 6191,
+    "absent_count": 493809,
+    "present_pct": 1.24,
+    "absent_pct": 98.76,
+    "odds_ratio": 0.0
+  }
+]

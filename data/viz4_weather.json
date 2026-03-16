@@ -1,0 +1,162 @@
+[
+  {
+    "category": "D\u00e9gag\u00e9",
+    "severity": {
+      "min": 2.0,
+      "q1": 2.0,
+      "median": 2.0,
+      "q3": 2.0,
+      "max": 3.0,
+      "count": 218432
+    },
+    "precipitation": {
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "max": 0.0,
+      "count": 218432
+    },
+    "count": 218432
+  },
+  {
+    "category": "Nuageux",
+    "severity": {
+      "min": 2.0,
+      "q1": 2.0,
+      "median": 2.0,
+      "q3": 2.0,
+      "max": 3.0,
+      "count": 143406
+    },
+    "precipitation": {
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "max": 0.0,
+      "count": 143406
+    },
+    "count": 143406
+  },
+  {
+    "category": "Part. nuageux",
+    "severity": {
+      "min": 2.0,
+      "q1": 2.0,
+      "median": 2.0,
+      "q3": 2.0,
+      "max": 3.0,
+      "count": 58155
+    },
+    "precipitation": {
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "max": 0.0,
+      "count": 58155
+    },
+    "count": 58155
+  },
+  {
+    "category": "Pluie l\u00e9g\u00e8re",
+    "severity": {
+      "min": 2.0,
+      "q1": 2.0,
+      "median": 2.0,
+      "q3": 2.0,
+      "max": 3.0,
+      "count": 24192
+    },
+    "precipitation": {
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 0.01,
+      "q3": 0.03,
+      "max": 0.13,
+      "count": 24192
+    },
+    "count": 24192
+  },
+  {
+    "category": "Brouillard",
+    "severity": {
+      "min": 2.0,
+      "q1": 2.0,
+      "median": 2.0,
+      "q3": 2.0,
+      "max": 3.0,
+      "count": 11637
+    },
+    "precipitation": {
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0,
+      "max": 0.0,
+      "count": 11637
+    },
+    "count": 11637
+  },
+  {
+    "category": "Neige",
+    "severity": {
+      "min": 2.0,
+      "q1": 2.0,
+      "median": 2.0,
+      "q3": 2.0,
+      "max": 3.0,
+      "count": 9527
+    },
+    "precipitation": {
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.01,
+      "max": 0.06,
+      "count": 9527
+    },
+    "count": 9527
+  },
+  {
+    "category": "Pluie",
+    "severity": {
+      "min": 2.0,
+      "q1": 2.0,
+      "median": 2.0,
+      "q3": 2.0,
+      "max": 3.0,
+      "count": 7634
+    },
+    "precipitation": {
+      "min": 0.0,
+      "q1": 0.02,
+      "median": 0.07,
+      "q3": 0.14,
+      "max": 0.34,
+      "count": 7634
+    },
+    "count": 7634
+  },
+  {
+    "category": "Orage",
+    "severity": {
+      "min": 2.0,
+      "q1": 2.0,
+      "median": 2.0,
+      "q3": 2.0,
+      "max": 3.0,
+      "count": 2266
+    },
+    "precipitation": {
+      "min": 0.0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.05,
+      "max": 0.367,
+      "count": 2266
+    },
+    "count": 2266
+  }
+]

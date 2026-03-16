@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INF8808 – Accidents routiers US</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f6f8; color: #222; }
+
+    nav {
+      display: flex; gap: 8px; padding: 12px 24px;
+      background: #fff; border-bottom: 1px solid #e0e0e0;
+      position: sticky; top: 0; z-index: 10;
+    }
+    nav button {
+      padding: 6px 14px; border: 1px solid #ccc; border-radius: 6px;
+      background: #fff; cursor: pointer; font-size: 13px;
+    }
+    nav button.active { background: #1a56db; color: #fff; border-color: #1a56db; }
+
+    .section { display: none; padding: 24px; max-width: 1100px; margin: 0 auto; }
+    .section.active { display: block; }
+
+    h2 { font-size: 18px; margin-bottom: 16px; }
+    h3 { font-size: 14px; color: #555; margin: 16px 0 8px; }
+
+    .card {
+      background: #fff; border-radius: 10px; padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.08); margin-bottom: 20px;
+    }
+
+    .btn-group { display: flex; gap: 6px; margin-bottom: 12px; }
+    .btn-group button {
+      padding: 5px 12px; border: 1px solid #ccc; border-radius: 5px;
+      background: #fff; cursor: pointer; font-size: 12px;
+    }
+    .btn-group button.active { background: #1a56db; color: #fff; border-color: #1a56db; }
+
+    /* Viz 1 */
+    #hm-count, #hm-sev { width: 100%; overflow-x: auto; }
+    #leg-count, #leg-sev { width: 100%; margin-top: 6px; }
+
+    /* Viz 2 */
+    #hm-week { width: 100%; overflow-x: auto; }
+    .stat-row { display: flex; gap: 12px; margin-top: 12px; }
+    .stat-card {
+      flex: 1; padding: 14px; background: #f0f4ff; border-radius: 8px; text-align: center;
+    }
+    .stat-card .val { font-size: 28px; font-weight: 700; color: #1a56db; }
+    .stat-card .lbl { font-size: 12px; color: #666; margin-top: 4px; }
+
+    /* Viz 3 */
+    #map-svg-wrap { position: relative; width: 100%; }
+    #map-tooltip {
+      display: none; position: absolute; background: rgba(0,0,0,.75);
+      color: #fff; padding: 8px 12px; border-radius: 6px;
+      font-size: 12px; pointer-events: none; line-height: 1.6;
+    }
+    #top5-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .top-badge {
+      background: #e8f0fe; color: #1a56db; padding: 4px 10px;
+      border-radius: 20px; font-size: 12px;
+    }
+
+    /* Viz 4 & 5 */
+    #bp-wrap, #v5-wrap { width: 100%; overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <button class="active" onclick="show(0, this)">Viz 1 – Temporelle</button>
+  <button onclick="show(1, this)">Viz 2 – Jour × Heure</button>
+  <button onclick="show(2, this)">Viz 3 – Carte US</button>
+  <button onclick="show(3, this)">Viz 4 – Météo</button>
+  <button onclick="show(4, this)">Viz 5 – Infrastructure</button>
+</nav>
+
+<!-- VIZ 1 -->
+<div class="section active" id="s0">
+  <h2>Heatmap temporelle – accidents par mois / année</h2>
+  <div class="card">
+    <h3>Nombre d'accidents</h3>
+    <div id="hm-count"></div>
+    <div id="leg-count"></div>
+  </div>
+  <div class="card">
+    <h3>Gravité moyenne</h3>
+    <div id="hm-sev"></div>
+    <div id="leg-sev"></div>
+  </div>
+</div>
+
+<!-- VIZ 2 -->
+<div class="section" id="s1">
+  <h2>Heatmap jours × heures</h2>
+  <div class="card">
+    <div id="hm-week"></div>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="val" id="day-pct">–</div>
+        <div class="lbl">Accidents de jour (6h–19h)</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="night-pct">–</div>
+        <div class="lbl">Accidents de nuit (20h–5h)</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="peak-slot">–</div>
+        <div class="lbl">Créneau le plus accidentogène</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIZ 3 -->
+<div class="section" id="s2">
+  <h2>Carte choroplèthe – États US</h2>
+  <div class="card">
+    <div class="btn-group">
+      <button data-map-mode="count" class="active">Nombre d'accidents</button>
+      <button data-map-mode="severity">Gravité moyenne</button>
+    </div>
+    <div id="map-svg-wrap">
+      <div id="map-tooltip"></div>
+    </div>
+    <h3>Top 5 états</h3>
+    <div id="top5-list"></div>
+  </div>
+</div>
+
+<!-- VIZ 4 -->
+<div class="section" id="s3">
+  <h2>Boxplot – Conditions météo</h2>
+  <div class="card">
+    <div class="btn-group">
+      <button data-bp-metric="severity" class="active">Gravité</button>
+      <button data-bp-metric="precipitation">Précipitations</button>
+    </div>
+    <div id="bp-wrap"></div>
+  </div>
+</div>
+
+<!-- VIZ 5 -->
+<div class="section" id="s4">
+  <h2>Infrastructure routière – impact sur les accidents</h2>
+  <div class="card">
+    <div class="btn-group">
+      <button data-v5-view="proportion" class="active">Proportion</button>
+      <button data-v5-view="odds">Odds ratio</button>
+    </div>
+    <div id="v5-wrap"></div>
+  </div>
+</div>
+
+<script type="module">
+  import { renderViz1 } from "./d3/viz1_temporal.js";
+  import { renderViz2 } from "./d3/viz2_weekhour.js";
+  import { renderViz3 } from "./d3/viz3_states.js";
+  import { renderViz4 } from "./d3/viz4_weather.js";
+  import { renderViz5 } from "./d3/viz5_infrastructure.js";
+
+  const sections = document.querySelectorAll(".section");
+  const rendered = new Set();
+
+  const renderers = [
+    () => renderViz1(document.getElementById("s0")),
+    () => renderViz2(document.getElementById("s1")),
+    () => renderViz3(document.getElementById("s2")),
+    () => renderViz4(document.getElementById("s3")),
+    () => renderViz5(document.getElementById("s4")),
+  ];
+
+  window.show = function(idx, btn) {
+    sections.forEach(s => s.classList.remove("active"));
+    document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+    sections[idx].classList.add("active");
+    btn.classList.add("active");
+    if (!rendered.has(idx)) {
+      rendered.add(idx);
+      renderers[idx]();
+    }
+  };
+
+  // Render viz1 on load
+  rendered.add(0);
+  renderViz1(document.getElementById("s0"));
+</script>
+</body>
+</html>
