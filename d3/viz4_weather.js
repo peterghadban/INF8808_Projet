@@ -1,144 +1,250 @@
-// ─── Viz 4 : Boxplot météo ────────────────────────────────────────────────────
+// ─── Viz 4 : Météo & Température ─────────────────────────────────────────────
 // Dépendances : D3 v7
-// Données     : viz4_weather.json
-//   [{category, count, severity:{min,q1,median,q3,max}, precipitation:{...}}]
+// Données     : viz4_weather_stacked.json  [{category, severity, count}]
+//               viz4_temperature.json      [{bin_label, accident_count, exposure_pct}]
 
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
+const SEV_COLORS = {
+  1: "#B5D4F4",
+  2: "#378ADD",
+  3: "#185FA5",
+  4: "#042C53",
+};
+
 export async function renderViz4(container) {
-  const raw = await d3.json("data/viz4_weather.json");
+  const [stacked, tempData] = await Promise.all([
+    d3.json("data/viz4_weather_stacked.json"),
+    d3.json("data/viz4_temperature.json"),
+  ]);
 
-  // Sort by count desc (already done in Python, but ensure it)
-  raw.sort((a, b) => b.count - a.count);
+  let activeTab = "q11";
 
-  const categories = raw.map(d => d.category);
-  let currentMetric = "severity";
+  const chartWrap = container.querySelector("#v4-chart");
 
-  const margin = { top: 20, right: 20, bottom: 60, left: 50 };
-  const wrap   = container.querySelector("#bp-wrap");
-  const W      = (wrap.offsetWidth || 600) - margin.left - margin.right;
-  const H      = 280 - margin.top - margin.bottom;
-
-  const svg = d3.select(wrap).append("svg")
-    .attr("width",  W + margin.left + margin.right)
-    .attr("height", H + margin.top  + margin.bottom)
-    .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
-
-  const x = d3.scaleBand().domain(categories).range([0, W]).padding(0.3);
-  const y = d3.scaleLinear().range([H, 0]);
-
-  const xAxis = svg.append("g").attr("transform", `translate(0,${H})`);
-  const yAxis = svg.append("g");
-  const yLabel = svg.append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("x", -H / 2).attr("y", -margin.left + 12)
-    .attr("text-anchor", "middle")
-    .attr("font-size", 11).attr("fill", "#888");
-
-  // Grid lines
-  const gridG = svg.insert("g", ":first-child").attr("class", "grid");
-
-  function getVals(d) {
-    return currentMetric === "severity" ? d.severity : d.precipitation;
+  function clearChart() {
+    chartWrap.innerHTML = "";
   }
 
-  function draw() {
-    const allStats = raw.map(getVals);
-    const yMin = d3.min(allStats, d => d.min);
-    const yMax = d3.max(allStats, d => d.max);
-    const pad  = (yMax - yMin) * 0.1;
-    y.domain([yMin - pad, yMax + pad]);
+  // ── Q11 : horizontal stacked bar ──────────────────────────────────────────
+  function drawQ11() {
+    clearChart();
+
+    const severities = [1, 2, 3, 4];
+
+    // Build per-category totals and stacked data
+    const catTotals = new Map();
+    stacked.forEach(d => {
+      catTotals.set(d.category, (catTotals.get(d.category) || 0) + d.count);
+    });
+
+    const categories = [...catTotals.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([cat]) => cat);
+
+    // Pivot to { category -> { sev -> count } }
+    const pivot = new Map();
+    categories.forEach(c => pivot.set(c, {}));
+    stacked.forEach(d => {
+      pivot.get(d.category)[d.severity] = d.count;
+    });
+
+    // D3 stack
+    const stackData = categories.map(cat => {
+      const row = { category: cat };
+      severities.forEach(s => { row[s] = pivot.get(cat)[s] || 0; });
+      return row;
+    });
+
+    const stack = d3.stack().keys(severities)(stackData);
+
+    const margin = { top: 16, right: 120, bottom: 40, left: 110 };
+    const W = (chartWrap.offsetWidth || 680) - margin.left - margin.right;
+    const H = categories.length * 36;
+
+    const svg = d3.select(chartWrap).append("svg")
+      .attr("width",  W + margin.left + margin.right)
+      .attr("height", H + margin.top  + margin.bottom)
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const x = d3.scaleLinear()
+      .domain([0, d3.max(catTotals.values())])
+      .range([0, W]);
+
+    const y = d3.scaleBand()
+      .domain(categories)
+      .range([0, H])
+      .padding(0.25);
+
+    // Grid lines
+    svg.append("g").attr("class", "grid")
+      .call(d3.axisBottom(x).ticks(5).tickSize(H).tickFormat(""))
+      .attr("transform", "translate(0,0)")
+      .selectAll("line").attr("stroke", "#eee");
+    svg.select(".grid .domain").remove();
 
     // Axes
-    xAxis.call(
-      d3.axisBottom(x)
-        .tickSize(0)
-    ).selectAll("text")
-      .attr("font-size", 11)
-      .attr("fill", "#888")
-      .attr("dy", "1.2em");
+    svg.append("g")
+      .call(d3.axisLeft(y).tickSize(0))
+      .selectAll("text")
+        .attr("font-size", 11).attr("fill", "#555").attr("dx", "-6");
+    svg.select(".domain").remove();
 
-    xAxis.select(".domain").attr("stroke", "#ddd");
+    svg.append("g")
+      .attr("transform", `translate(0,${H})`)
+      .call(
+        d3.axisBottom(x)
+          .ticks(5)
+          .tickFormat(d => d >= 1e6 ? d3.format(".1f")(d / 1e6) + "M" : d3.format(",")(d))
+      )
+      .selectAll("text").attr("font-size", 10).attr("fill", "#888");
 
-    yAxis.call(d3.axisLeft(y).ticks(5).tickSize(-W))
-      .selectAll("text").attr("font-size", 11).attr("fill", "#888");
-    yAxis.selectAll(".tick line").attr("stroke", "#eee");
-    yAxis.select(".domain").remove();
-
-    yLabel.text(currentMetric === "severity" ? "Gravité" : "Précipitations (in)");
-
-    // Boxplots
-    const color = "#3B7EC4";
-    svg.selectAll(".box-group").remove();
-
-    raw.forEach(d => {
-      const stats = getVals(d);
-      const cx    = x(d.category) + x.bandwidth() / 2;
-      const bw    = x.bandwidth();
-      const hw    = bw * 0.35;
-      const g     = svg.append("g").attr("class", "box-group");
-
-      // Whisker top
-      g.append("line")
-        .attr("x1", cx).attr("y1", y(stats.max))
-        .attr("x2", cx).attr("y2", y(stats.q3))
-        .attr("stroke", color).attr("stroke-width", 1.5);
-
-      // Whisker cap top
-      g.append("line")
-        .attr("x1", cx - hw * 0.5).attr("y1", y(stats.max))
-        .attr("x2", cx + hw * 0.5).attr("y2", y(stats.max))
-        .attr("stroke", color).attr("stroke-width", 1.5);
-
-      // Box Q1–Q3
-      g.append("rect")
-        .attr("x", cx - hw)
-        .attr("y", y(stats.q3))
-        .attr("width",  bw * 0.7)
-        .attr("height", Math.abs(y(stats.q1) - y(stats.q3)))
-        .attr("rx", 2)
-        .attr("fill",   color + "33")
-        .attr("stroke", color)
-        .attr("stroke-width", 1);
-
-      // Median line
-      g.append("line")
-        .attr("x1", cx - hw).attr("y1", y(stats.median))
-        .attr("x2", cx + hw).attr("y2", y(stats.median))
-        .attr("stroke", color).attr("stroke-width", 2);
-
-      // Whisker bottom
-      g.append("line")
-        .attr("x1", cx).attr("y1", y(stats.q1))
-        .attr("x2", cx).attr("y2", y(stats.min))
-        .attr("stroke", color).attr("stroke-width", 1.5);
-
-      g.append("line")
-        .attr("x1", cx - hw * 0.5).attr("y1", y(stats.min))
-        .attr("x2", cx + hw * 0.5).attr("y2", y(stats.min))
-        .attr("stroke", color).attr("stroke-width", 1.5);
-
-      // Tooltip rect (invisible)
-      g.append("rect")
-        .attr("x", cx - bw / 2).attr("y", y(stats.max))
-        .attr("width", bw)
-        .attr("height", y(stats.min) - y(stats.max))
-        .attr("fill", "transparent")
+    // Bars
+    stack.forEach(layer => {
+      svg.selectAll(`.bar-sev-${layer.key}`)
+        .data(layer)
+        .join("rect")
+        .attr("class", `bar-sev-${layer.key}`)
+        .attr("y",      d => y(d.data.category))
+        .attr("x",      d => x(d[0]))
+        .attr("width",  d => x(d[1]) - x(d[0]))
+        .attr("height", y.bandwidth())
+        .attr("fill",   SEV_COLORS[layer.key])
         .append("title")
-        .text(`${d.category}\nMédiane: ${stats.median}\nQ1: ${stats.q1} – Q3: ${stats.q3}\nMin: ${stats.min} / Max: ${stats.max}\nN=${d3.format(",")(d.count)}`);
+        .text(d => `${d.data.category} — Sévérité ${layer.key}: ${d3.format(",")(d[1] - d[0])}`);
+    });
+
+    // Legend
+    const leg = svg.append("g").attr("transform", `translate(${W + 12}, 10)`);
+    severities.forEach((s, i) => {
+      const g = leg.append("g").attr("transform", `translate(0,${i * 20})`);
+      g.append("rect").attr("width", 12).attr("height", 12).attr("rx", 2).attr("fill", SEV_COLORS[s]);
+      g.append("text").attr("x", 16).attr("y", 10)
+        .attr("font-size", 11).attr("fill", "#555")
+        .text(`Sévérité ${s}`);
     });
   }
 
-  draw();
+  // ── Q13 : dual-axis line chart ─────────────────────────────────────────────
+  function drawQ13() {
+    clearChart();
 
-  // Metric toggle
-  container.querySelectorAll("[data-bp-metric]").forEach(btn => {
+    const margin = { top: 20, right: 60, bottom: 80, left: 70 };
+    const W = (chartWrap.offsetWidth || 680) - margin.left - margin.right;
+    const H = 300 - margin.top - margin.bottom;
+
+    const svg = d3.select(chartWrap).append("svg")
+      .attr("width",  W + margin.left + margin.right)
+      .attr("height", H + margin.top  + margin.bottom)
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const x = d3.scalePoint()
+      .domain(tempData.map(d => d.bin_label))
+      .range([0, W]);
+
+    const yLeft = d3.scaleLinear()
+      .domain([0, d3.max(tempData, d => d.accident_count) * 1.1])
+      .range([H, 0]);
+
+    const yRight = d3.scaleLinear()
+      .domain([0, d3.max(tempData, d => d.exposure_pct) * 1.1])
+      .range([H, 0]);
+
+    // Show every 4th label to avoid overlap
+    const tickFilter = tempData.map((d, i) => i % 4 === 0 ? d.bin_label : null).filter(Boolean);
+
+    svg.append("g")
+      .attr("transform", `translate(0,${H})`)
+      .call(d3.axisBottom(x).tickValues(tickFilter).tickSize(0))
+      .selectAll("text")
+        .attr("font-size", 10).attr("fill", "#888")
+        .attr("transform", "rotate(-40)")
+        .attr("text-anchor", "end")
+        .attr("dy", "0.4em")
+        .attr("dx", "-0.4em");
+
+    svg.append("g")
+      .call(
+        d3.axisLeft(yLeft)
+          .ticks(5)
+          .tickFormat(d => d >= 1e6 ? d3.format(".1f")(d / 1e6) + "M" : d3.format(",")(d))
+          .tickSize(-W)
+      )
+      .selectAll("text").attr("font-size", 10).attr("fill", "#378ADD");
+    svg.selectAll(".tick line").attr("stroke", "#eee");
+    svg.select(".domain").remove();
+
+    svg.append("g")
+      .attr("transform", `translate(${W},0)`)
+      .call(d3.axisRight(yRight).ticks(5).tickFormat(d => d + "%"))
+      .selectAll("text").attr("font-size", 10).attr("fill", "#E24B4A");
+
+    // Left Y label
+    svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", -H / 2).attr("y", -margin.left + 14)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 11).attr("fill", "#378ADD")
+      .text("Nombre d'accidents");
+
+    // Right Y label
+    svg.append("text")
+      .attr("transform", "rotate(90)")
+      .attr("x", H / 2).attr("y", -W - margin.right + 14)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 11).attr("fill", "#E24B4A")
+      .text("Part des données (%)");
+
+    // Accident count line (blue)
+    svg.append("path")
+      .datum(tempData)
+      .attr("fill", "none")
+      .attr("stroke", "#378ADD")
+      .attr("stroke-width", 2)
+      .attr("d", d3.line()
+        .x(d => x(d.bin_label))
+        .y(d => yLeft(d.accident_count))
+        .curve(d3.curveMonotoneX)
+      );
+
+    // Exposure pct line (red dashed)
+    svg.append("path")
+      .datum(tempData)
+      .attr("fill", "none")
+      .attr("stroke", "#E24B4A")
+      .attr("stroke-width", 2)
+      .attr("stroke-dasharray", "6,4")
+      .attr("d", d3.line()
+        .x(d => x(d.bin_label))
+        .y(d => yRight(d.exposure_pct))
+        .curve(d3.curveMonotoneX)
+      );
+
+    // Annotation
+    svg.append("text")
+      .attr("x", W)
+      .attr("y", H + margin.bottom - 4)
+      .attr("text-anchor", "end")
+      .attr("font-size", 10)
+      .attr("fill", "#888")
+      .text("Un écart entre les deux courbes indique un effet réel de la température sur les accidents.");
+  }
+
+  // ── Tab switching ──────────────────────────────────────────────────────────
+  function renderTab(key) {
+    activeTab = key;
+    key === "q11" ? drawQ11() : drawQ13();
+  }
+
+  container.querySelectorAll("[data-v4-tab]").forEach(btn => {
     btn.addEventListener("click", () => {
-      currentMetric = btn.dataset.bpMetric;
-      container.querySelectorAll("[data-bp-metric]")
+      container.querySelectorAll("[data-v4-tab]")
         .forEach(b => b.classList.toggle("active", b === btn));
-      draw();
+      renderTab(btn.dataset.v4Tab);
     });
   });
+
+  renderTab("q11");
 }

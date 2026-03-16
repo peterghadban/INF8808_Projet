@@ -1,0 +1,142 @@
+[
+  {
+    "bin_label": "-20–-15",
+    "accident_count": 40,
+    "exposure_pct": 0.008
+  },
+  {
+    "bin_label": "-15–-10",
+    "accident_count": 163,
+    "exposure_pct": 0.033
+  },
+  {
+    "bin_label": "-10–-5",
+    "accident_count": 402,
+    "exposure_pct": 0.082
+  },
+  {
+    "bin_label": "-5–0",
+    "accident_count": 638,
+    "exposure_pct": 0.13
+  },
+  {
+    "bin_label": "0–5",
+    "accident_count": 1000,
+    "exposure_pct": 0.204
+  },
+  {
+    "bin_label": "5–10",
+    "accident_count": 1513,
+    "exposure_pct": 0.309
+  },
+  {
+    "bin_label": "10–15",
+    "accident_count": 2182,
+    "exposure_pct": 0.446
+  },
+  {
+    "bin_label": "15–20",
+    "accident_count": 4320,
+    "exposure_pct": 0.882
+  },
+  {
+    "bin_label": "20–25",
+    "accident_count": 6175,
+    "exposure_pct": 1.261
+  },
+  {
+    "bin_label": "25–30",
+    "accident_count": 11771,
+    "exposure_pct": 2.405
+  },
+  {
+    "bin_label": "30–35",
+    "accident_count": 19359,
+    "exposure_pct": 3.955
+  },
+  {
+    "bin_label": "35–40",
+    "accident_count": 21644,
+    "exposure_pct": 4.421
+  },
+  {
+    "bin_label": "40–45",
+    "accident_count": 23584,
+    "exposure_pct": 4.818
+  },
+  {
+    "bin_label": "45–50",
+    "accident_count": 31041,
+    "exposure_pct": 6.341
+  },
+  {
+    "bin_label": "50–55",
+    "accident_count": 39079,
+    "exposure_pct": 7.983
+  },
+  {
+    "bin_label": "55–60",
+    "accident_count": 43013,
+    "exposure_pct": 8.787
+  },
+  {
+    "bin_label": "60–65",
+    "accident_count": 49038,
+    "exposure_pct": 10.017
+  },
+  {
+    "bin_label": "65–70",
+    "accident_count": 44101,
+    "exposure_pct": 9.009
+  },
+  {
+    "bin_label": "70–75",
+    "accident_count": 51821,
+    "exposure_pct": 10.586
+  },
+  {
+    "bin_label": "75–80",
+    "accident_count": 49993,
+    "exposure_pct": 10.212
+  },
+  {
+    "bin_label": "80–85",
+    "accident_count": 42139,
+    "exposure_pct": 8.608
+  },
+  {
+    "bin_label": "85–90",
+    "accident_count": 25542,
+    "exposure_pct": 5.218
+  },
+  {
+    "bin_label": "90–95",
+    "accident_count": 14166,
+    "exposure_pct": 2.894
+  },
+  {
+    "bin_label": "95–100",
+    "accident_count": 4638,
+    "exposure_pct": 0.947
+  },
+  {
+    "bin_label": "100–105",
+    "accident_count": 1498,
+    "exposure_pct": 0.306
+  },
+  {
+    "bin_label": "105–110",
+    "accident_count": 534,
+    "exposure_pct": 0.109
+  },
+  {
+    "bin_label": "110–115",
+    "accident_count": 93,
+    "exposure_pct": 0.019
+  },
+  {
+    "bin_label": "115–120",
+    "accident_count": 7,
+    "exposure_pct": 0.001
+  }
+]
