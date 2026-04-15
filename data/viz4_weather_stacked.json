@@ -1,0 +1,162 @@
+[
+  {
+    "category": "Dégagé",
+    "severity": 1,
+    "count": 2166
+  },
+  {
+    "category": "Dégagé",
+    "severity": 2,
+    "count": 178663
+  },
+  {
+    "category": "Dégagé",
+    "severity": 3,
+    "count": 31993
+  },
+  {
+    "category": "Dégagé",
+    "severity": 4,
+    "count": 5610
+  },
+  {
+    "category": "Nuageux",
+    "severity": 1,
+    "count": 1201
+  },
+  {
+    "category": "Nuageux",
+    "severity": 2,
+    "count": 112207
+  },
+  {
+    "category": "Nuageux",
+    "severity": 3,
+    "count": 26205
+  },
+  {
+    "category": "Nuageux",
+    "severity": 4,
+    "count": 3793
+  },
+  {
+    "category": "Part. nuageux",
+    "severity": 1,
+    "count": 473
+  },
+  {
+    "category": "Part. nuageux",
+    "severity": 4,
+    "count": 1364
+  },
+  {
+    "category": "Part. nuageux",
+    "severity": 3,
+    "count": 12426
+  },
+  {
+    "category": "Part. nuageux",
+    "severity": 2,
+    "count": 43892
+  },
+  {
+    "category": "Pluie légère",
+    "severity": 4,
+    "count": 635
+  },
+  {
+    "category": "Pluie légère",
+    "severity": 3,
+    "count": 4804
+  },
+  {
+    "category": "Pluie légère",
+    "severity": 2,
+    "count": 18591
+  },
+  {
+    "category": "Pluie légère",
+    "severity": 1,
+    "count": 162
+  },
+  {
+    "category": "Brouillard",
+    "severity": 1,
+    "count": 46
+  },
+  {
+    "category": "Brouillard",
+    "severity": 2,
+    "count": 9692
+  },
+  {
+    "category": "Brouillard",
+    "severity": 4,
+    "count": 249
+  },
+  {
+    "category": "Brouillard",
+    "severity": 3,
+    "count": 1650
+  },
+  {
+    "category": "Neige",
+    "severity": 4,
+    "count": 323
+  },
+  {
+    "category": "Neige",
+    "severity": 3,
+    "count": 1608
+  },
+  {
+    "category": "Neige",
+    "severity": 2,
+    "count": 7589
+  },
+  {
+    "category": "Neige",
+    "severity": 1,
+    "count": 7
+  },
+  {
+    "category": "Pluie",
+    "severity": 1,
+    "count": 34
+  },
+  {
+    "category": "Pluie",
+    "severity": 2,
+    "count": 5790
+  },
+  {
+    "category": "Pluie",
+    "severity": 3,
+    "count": 1610
+  },
+  {
+    "category": "Pluie",
+    "severity": 4,
+    "count": 200
+  },
+  {
+    "category": "Orage",
+    "severity": 2,
+    "count": 1781
+  },
+  {
+    "category": "Orage",
+    "severity": 3,
+    "count": 408
+  },
+  {
+    "category": "Orage",
+    "severity": 4,
+    "count": 51
+  },
+  {
+    "category": "Orage",
+    "severity": 1,
+    "count": 26
+  }
+]

@@ -1,0 +1,524 @@
+[
+  {
+    "year": 2016,
+    "month": 1,
+    "count": 2,
+    "avg_severity": 4.0
+  },
+  {
+    "year": 2016,
+    "month": 2,
+    "count": 58,
+    "avg_severity": 2.79
+  },
+  {
+    "year": 2016,
+    "month": 3,
+    "count": 378,
+    "avg_severity": 2.44
+  },
+  {
+    "year": 2016,
+    "month": 4,
+    "count": 1196,
+    "avg_severity": 2.39
+  },
+  {
+    "year": 2016,
+    "month": 5,
+    "count": 1185,
+    "avg_severity": 2.36
+  },
+  {
+    "year": 2016,
+    "month": 6,
+    "count": 1941,
+    "avg_severity": 2.41
+  },
+  {
+    "year": 2016,
+    "month": 7,
+    "count": 3055,
+    "avg_severity": 2.39
+  },
+  {
+    "year": 2016,
+    "month": 8,
+    "count": 3566,
+    "avg_severity": 2.37
+  },
+  {
+    "year": 2016,
+    "month": 9,
+    "count": 3603,
+    "avg_severity": 2.37
+  },
+  {
+    "year": 2016,
+    "month": 10,
+    "count": 3570,
+    "avg_severity": 2.36
+  },
+  {
+    "year": 2016,
+    "month": 11,
+    "count": 4281,
+    "avg_severity": 2.35
+  },
+  {
+    "year": 2016,
+    "month": 12,
+    "count": 3828,
+    "avg_severity": 2.38
+  },
+  {
+    "year": 2017,
+    "month": 1,
+    "count": 3586,
+    "avg_severity": 2.37
+  },
+  {
+    "year": 2017,
+    "month": 2,
+    "count": 3374,
+    "avg_severity": 2.36
+  },
+  {
+    "year": 2017,
+    "month": 3,
+    "count": 3718,
+    "avg_severity": 2.37
+  },
+  {
+    "year": 2017,
+    "month": 4,
+    "count": 3164,
+    "avg_severity": 2.41
+  },
+  {
+    "year": 2017,
+    "month": 5,
+    "count": 2639,
+    "avg_severity": 2.42
+  },
+  {
+    "year": 2017,
+    "month": 6,
+    "count": 2904,
+    "avg_severity": 2.43
+  },
+  {
+    "year": 2017,
+    "month": 7,
+    "count": 2806,
+    "avg_severity": 2.45
+  },
+  {
+    "year": 2017,
+    "month": 8,
+    "count": 5334,
+    "avg_severity": 2.36
+  },
+  {
+    "year": 2017,
+    "month": 9,
+    "count": 5043,
+    "avg_severity": 2.39
+  },
+  {
+    "year": 2017,
+    "month": 10,
+    "count": 4822,
+    "avg_severity": 2.37
+  },
+  {
+    "year": 2017,
+    "month": 11,
+    "count": 4571,
+    "avg_severity": 2.38
+  },
+  {
+    "year": 2017,
+    "month": 12,
+    "count": 4553,
+    "avg_severity": 2.43
+  },
+  {
+    "year": 2018,
+    "month": 1,
+    "count": 4874,
+    "avg_severity": 2.4
+  },
+  {
+    "year": 2018,
+    "month": 2,
+    "count": 4679,
+    "avg_severity": 2.4
+  },
+  {
+    "year": 2018,
+    "month": 3,
+    "count": 4754,
+    "avg_severity": 2.39
+  },
+  {
+    "year": 2018,
+    "month": 4,
+    "count": 4773,
+    "avg_severity": 2.39
+  },
+  {
+    "year": 2018,
+    "month": 5,
+    "count": 4939,
+    "avg_severity": 2.39
+  },
+  {
+    "year": 2018,
+    "month": 6,
+    "count": 4416,
+    "avg_severity": 2.42
+  },
+  {
+    "year": 2018,
+    "month": 7,
+    "count": 4223,
+    "avg_severity": 2.41
+  },
+  {
+    "year": 2018,
+    "month": 8,
+    "count": 4875,
+    "avg_severity": 2.36
+  },
+  {
+    "year": 2018,
+    "month": 9,
+    "count": 4784,
+    "avg_severity": 2.38
+  },
+  {
+    "year": 2018,
+    "month": 10,
+    "count": 5472,
+    "avg_severity": 2.35
+  },
+  {
+    "year": 2018,
+    "month": 11,
+    "count": 5270,
+    "avg_severity": 2.35
+  },
+  {
+    "year": 2018,
+    "month": 12,
+    "count": 4519,
+    "avg_severity": 2.37
+  },
+  {
+    "year": 2019,
+    "month": 1,
+    "count": 5189,
+    "avg_severity": 2.38
+  },
+  {
+    "year": 2019,
+    "month": 2,
+    "count": 4892,
+    "avg_severity": 2.35
+  },
+  {
+    "year": 2019,
+    "month": 3,
+    "count": 4375,
+    "avg_severity": 2.37
+  },
+  {
+    "year": 2019,
+    "month": 4,
+    "count": 4783,
+    "avg_severity": 2.34
+  },
+  {
+    "year": 2019,
+    "month": 5,
+    "count": 4749,
+    "avg_severity": 2.34
+  },
+  {
+    "year": 2019,
+    "month": 6,
+    "count": 4234,
+    "avg_severity": 2.36
+  },
+  {
+    "year": 2019,
+    "month": 7,
+    "count": 4424,
+    "avg_severity": 2.34
+  },
+  {
+    "year": 2019,
+    "month": 8,
+    "count": 4923,
+    "avg_severity": 2.31
+  },
+  {
+    "year": 2019,
+    "month": 9,
+    "count": 5667,
+    "avg_severity": 2.25
+  },
+  {
+    "year": 2019,
+    "month": 10,
+    "count": 7032,
+    "avg_severity": 2.24
+  },
+  {
+    "year": 2019,
+    "month": 11,
+    "count": 5233,
+    "avg_severity": 2.26
+  },
+  {
+    "year": 2019,
+    "month": 12,
+    "count": 6351,
+    "avg_severity": 2.24
+  },
+  {
+    "year": 2020,
+    "month": 1,
+    "count": 5909,
+    "avg_severity": 2.24
+  },
+  {
+    "year": 2020,
+    "month": 2,
+    "count": 5508,
+    "avg_severity": 2.23
+  },
+  {
+    "year": 2020,
+    "month": 3,
+    "count": 5469,
+    "avg_severity": 2.22
+  },
+  {
+    "year": 2020,
+    "month": 4,
+    "count": 5738,
+    "avg_severity": 2.19
+  },
+  {
+    "year": 2020,
+    "month": 5,
+    "count": 5641,
+    "avg_severity": 2.23
+  },
+  {
+    "year": 2020,
+    "month": 6,
+    "count": 6429,
+    "avg_severity": 2.26
+  },
+  {
+    "year": 2020,
+    "month": 7,
+    "count": 2297,
+    "avg_severity": 2.35
+  },
+  {
+    "year": 2020,
+    "month": 8,
+    "count": 2418,
+    "avg_severity": 2.36
+  },
+  {
+    "year": 2020,
+    "month": 9,
+    "count": 5514,
+    "avg_severity": 2.19
+  },
+  {
+    "year": 2020,
+    "month": 10,
+    "count": 8545,
+    "avg_severity": 2.14
+  },
+  {
+    "year": 2020,
+    "month": 11,
+    "count": 11164,
+    "avg_severity": 2.11
+  },
+  {
+    "year": 2020,
+    "month": 12,
+    "count": 11523,
+    "avg_severity": 2.1
+  },
+  {
+    "year": 2021,
+    "month": 1,
+    "count": 9868,
+    "avg_severity": 2.11
+  },
+  {
+    "year": 2021,
+    "month": 2,
+    "count": 10270,
+    "avg_severity": 2.11
+  },
+  {
+    "year": 2021,
+    "month": 3,
+    "count": 5856,
+    "avg_severity": 2.17
+  },
+  {
+    "year": 2021,
+    "month": 4,
+    "count": 6050,
+    "avg_severity": 2.17
+  },
+  {
+    "year": 2021,
+    "month": 5,
+    "count": 6671,
+    "avg_severity": 2.17
+  },
+  {
+    "year": 2021,
+    "month": 6,
+    "count": 8487,
+    "avg_severity": 2.15
+  },
+  {
+    "year": 2021,
+    "month": 7,
+    "count": 7309,
+    "avg_severity": 2.13
+  },
+  {
+    "year": 2021,
+    "month": 8,
+    "count": 7858,
+    "avg_severity": 2.13
+  },
+  {
+    "year": 2021,
+    "month": 9,
+    "count": 8777,
+    "avg_severity": 2.13
+  },
+  {
+    "year": 2021,
+    "month": 10,
+    "count": 8803,
+    "avg_severity": 2.13
+  },
+  {
+    "year": 2021,
+    "month": 11,
+    "count": 10095,
+    "avg_severity": 2.12
+  },
+  {
+    "year": 2021,
+    "month": 12,
+    "count": 11696,
+    "avg_severity": 2.11
+  },
+  {
+    "year": 2022,
+    "month": 1,
+    "count": 8813,
+    "avg_severity": 2.12
+  },
+  {
+    "year": 2022,
+    "month": 2,
+    "count": 10626,
+    "avg_severity": 2.11
+  },
+  {
+    "year": 2022,
+    "month": 3,
+    "count": 9110,
+    "avg_severity": 2.1
+  },
+  {
+    "year": 2022,
+    "month": 4,
+    "count": 12674,
+    "avg_severity": 2.08
+  },
+  {
+    "year": 2022,
+    "month": 5,
+    "count": 10330,
+    "avg_severity": 2.04
+  },
+  {
+    "year": 2022,
+    "month": 6,
+    "count": 8249,
+    "avg_severity": 2.05
+  },
+  {
+    "year": 2022,
+    "month": 7,
+    "count": 9249,
+    "avg_severity": 2.08
+  },
+  {
+    "year": 2022,
+    "month": 8,
+    "count": 9696,
+    "avg_severity": 2.07
+  },
+  {
+    "year": 2022,
+    "month": 9,
+    "count": 8867,
+    "avg_severity": 2.05
+  },
+  {
+    "year": 2022,
+    "month": 10,
+    "count": 5595,
+    "avg_severity": 2.05
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "count": 8406,
+    "avg_severity": 2.06
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "count": 12119,
+    "avg_severity": 2.05
+  },
+  {
+    "year": 2023,
+    "month": 1,
+    "count": 10312,
+    "avg_severity": 2.06
+  },
+  {
+    "year": 2023,
+    "month": 2,
+    "count": 3555,
+    "avg_severity": 2.07
+  },
+  {
+    "year": 2023,
+    "month": 3,
+    "count": 1897,
+    "avg_severity": 2.07
+  }
+]

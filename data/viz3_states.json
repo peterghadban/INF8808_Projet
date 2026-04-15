@@ -1,0 +1,198 @@
+{
+  "AL": {
+    "count": 6585,
+    "avg_severity": 2.24
+  },
+  "AR": {
+    "count": 1483,
+    "avg_severity": 2.29
+  },
+  "AZ": {
+    "count": 11150,
+    "avg_severity": 2.12
+  },
+  "CA": {
+    "count": 113274,
+    "avg_severity": 2.17
+  },
+  "CO": {
+    "count": 5924,
+    "avg_severity": 2.44
+  },
+  "CT": {
+    "count": 4602,
+    "avg_severity": 2.36
+  },
+  "DC": {
+    "count": 1207,
+    "avg_severity": 2.11
+  },
+  "DE": {
+    "count": 907,
+    "avg_severity": 2.27
+  },
+  "FL": {
+    "count": 56710,
+    "avg_severity": 2.14
+  },
+  "GA": {
+    "count": 11079,
+    "avg_severity": 2.5
+  },
+  "IA": {
+    "count": 1724,
+    "avg_severity": 2.43
+  },
+  "ID": {
+    "count": 718,
+    "avg_severity": 2.12
+  },
+  "IL": {
+    "count": 10904,
+    "avg_severity": 2.38
+  },
+  "IN": {
+    "count": 4320,
+    "avg_severity": 2.4
+  },
+  "KS": {
+    "count": 1362,
+    "avg_severity": 2.34
+  },
+  "KY": {
+    "count": 2101,
+    "avg_severity": 2.44
+  },
+  "LA": {
+    "count": 9651,
+    "avg_severity": 2.13
+  },
+  "MA": {
+    "count": 3917,
+    "avg_severity": 2.3
+  },
+  "MD": {
+    "count": 9128,
+    "avg_severity": 2.33
+  },
+  "ME": {
+    "count": 202,
+    "avg_severity": 2.19
+  },
+  "MI": {
+    "count": 10518,
+    "avg_severity": 2.33
+  },
+  "MN": {
+    "count": 12333,
+    "avg_severity": 2.17
+  },
+  "MO": {
+    "count": 5025,
+    "avg_severity": 2.4
+  },
+  "MS": {
+    "count": 977,
+    "avg_severity": 2.36
+  },
+  "MT": {
+    "count": 1871,
+    "avg_severity": 2.03
+  },
+  "NC": {
+    "count": 21750,
+    "avg_severity": 2.13
+  },
+  "ND": {
+    "count": 238,
+    "avg_severity": 2.01
+  },
+  "NE": {
+    "count": 1893,
+    "avg_severity": 2.18
+  },
+  "NH": {
+    "count": 635,
+    "avg_severity": 2.25
+  },
+  "NJ": {
+    "count": 9020,
+    "avg_severity": 2.24
+  },
+  "NM": {
+    "count": 636,
+    "avg_severity": 2.4
+  },
+  "NV": {
+    "count": 1343,
+    "avg_severity": 2.24
+  },
+  "NY": {
+    "count": 22594,
+    "avg_severity": 2.26
+  },
+  "OH": {
+    "count": 7678,
+    "avg_severity": 2.35
+  },
+  "OK": {
+    "count": 5296,
+    "avg_severity": 2.08
+  },
+  "OR": {
+    "count": 11559,
+    "avg_severity": 2.11
+  },
+  "PA": {
+    "count": 19351,
+    "avg_severity": 2.2
+  },
+  "RI": {
+    "count": 1093,
+    "avg_severity": 2.48
+  },
+  "SC": {
+    "count": 24737,
+    "avg_severity": 2.11
+  },
+  "SD": {
+    "count": 19,
+    "avg_severity": 2.74
+  },
+  "TN": {
+    "count": 10850,
+    "avg_severity": 2.21
+  },
+  "TX": {
+    "count": 37355,
+    "avg_severity": 2.22
+  },
+  "UT": {
+    "count": 6310,
+    "avg_severity": 2.18
+  },
+  "VA": {
+    "count": 19515,
+    "avg_severity": 2.28
+  },
+  "VT": {
+    "count": 57,
+    "avg_severity": 2.35
+  },
+  "WA": {
+    "count": 7004,
+    "avg_severity": 2.34
+  },
+  "WI": {
+    "count": 2290,
+    "avg_severity": 2.49
+  },
+  "WV": {
+    "count": 851,
+    "avg_severity": 2.16
+  },
+  "WY": {
+    "count": 254,
+    "avg_severity": 2.33
+  }
+}

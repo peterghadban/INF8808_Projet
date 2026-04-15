@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INF8808 – Accidents routiers US</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<aside id="sidebar">
+
+  <!-- Branding -->
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#F5C518" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M2 17l10 5 10-5" stroke="#F5C518" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M2 12l10 5 10-5" stroke="#F5C518" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-label">Sécurité Routière</span>
+    </div>
+    <div class="brand-sub">INF8808 · États-Unis 2016–2023</div>
+  </div>
+
+  <!-- Progress track -->
+  <div class="sidebar-progress">
+    <div id="progress-track">
+      <div id="progress-marker"></div>
+    </div>
+    <div class="progress-labels">
+      <span>Début</span>
+      <span>Fin</span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="sidebar-section-label">Navigation</div>
+  <nav>
+    <a href="#intro"><span class="nav-dot"></span>Introduction</a>
+    <a href="#viz1"><span class="nav-dot"></span>Évolution temporelle</a>
+    <a href="#viz2"><span class="nav-dot"></span>Heure &amp; Jour</a>
+    <a href="#viz3"><span class="nav-dot"></span>Géographie</a>
+    <a href="#viz4"><span class="nav-dot"></span>Météo</a>
+    <a href="#viz5"><span class="nav-dot"></span>Infrastructures</a>
+    <a href="#credits"><span class="nav-dot"></span>Crédits</a>
+  </nav>
+
+
+</aside>
+
+<main id="road-content">
+  <div id="road-line"></div>
+
+  <!-- INTRO -->
+  <section id="intro" class="stop">
+    <div class="intro-tag">Projet de visualisation</div>
+    <h2>L'influence des facteurs environnementaux sur la sécurité routière aux États-Unis</h2>
+    <p>Entre 2016 et 2023, plus de 7,7 millions d'accidents ont été recensés dans 49 États. Explorez comment l'environnement façonne la sécurité sur les routes américaines.</p>
+    <div class="intro-stats">
+      <div class="intro-stat">
+        <span class="num">7,7M</span>
+        <span class="desc">Accidents recensés</span>
+      </div>
+      <div class="intro-stat">
+        <span class="num">49</span>
+        <span class="desc">États couverts</span>
+      </div>
+      <div class="intro-stat">
+        <span class="num">8 ans</span>
+        <span class="desc">De données (2016–2023)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIZ 1 -->
+  <section id="viz1" class="stop">
+    <div class="stop-header">
+      <span class="section-number">01 / Temporel</span>
+      <h2>Quand les accidents surviennent-ils ?</h2>
+      <p>L'évolution temporelle révèle des tendances saisonnières marquées et une croissance générale du nombre d'incidents au fil des années.</p>
+    </div>
+    <div class="viz-container">
+      <h3>Nombre d'accidents</h3>
+      <div id="hm-count"></div>
+      <div id="leg-count"></div>
+      <h3>Gravité moyenne</h3>
+      <div id="hm-sev"></div>
+      <div id="leg-sev"></div>
+    </div>
+  </section>
+
+  <!-- VIZ 2 -->
+  <section id="viz2" class="stop">
+    <div class="stop-header">
+      <span class="section-number">02 / Heure &amp; Jour</span>
+      <h2>Quelle heure, quel jour ?</h2>
+      <p>Les heures de pointe du matin et du soir concentrent la majorité des accidents, avec des profils distincts selon les jours de la semaine.</p>
+    </div>
+    <div class="viz-container">
+      <div id="hm-week"></div>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="val" id="day-pct">–</div>
+          <div class="lbl">Accidents de jour (6h–19h)</div>
+        </div>
+        <div class="stat-card">
+          <div class="val" id="night-pct">–</div>
+          <div class="lbl">Accidents de nuit (20h–5h)</div>
+        </div>
+        <div class="stat-card">
+          <div class="val" id="peak-slot">–</div>
+          <div class="lbl">Créneau le plus accidentogène</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIZ 3 -->
+  <section id="viz3" class="stop">
+    <div class="stop-header">
+      <span class="section-number">03 / Géographie</span>
+      <h2>Où se produisent-ils ?</h2>
+      <p>Certains États affichent des taux d'accidents par conducteur nettement supérieurs à la moyenne nationale, révélant des disparités géographiques importantes.</p>
+    </div>
+    <div class="viz-container">
+      <div class="btn-group">
+        <button data-map-mode="count" class="active">Nombre d'accidents</button>
+        <button data-map-mode="severity">Gravité moyenne</button>
+      </div>
+      <div id="map-svg-wrap">
+        <div id="map-tooltip"></div>
+      </div>
+      <h3>Top 5 états</h3>
+      <div id="top5-list"></div>
+    </div>
+  </section>
+
+  <!-- VIZ 4 -->
+  <section id="viz4" class="stop">
+    <div class="stop-header">
+      <span class="section-number">04 / Météo</span>
+      <h2>Quel rôle joue la météo ?</h2>
+      <p>Les conditions météorologiques influencent fortement la fréquence et la gravité des accidents, bien que les jours dégagés concentrent paradoxalement le plus grand nombre d'incidents.</p>
+    </div>
+    <div class="viz-container">
+      <div class="btn-group">
+        <button data-v4-tab="q11" class="active">Q11 – Type de météo</button>
+        <button data-v4-tab="q13">Q13 – Température</button>
+      </div>
+      <div id="v4-chart"></div>
+    </div>
+  </section>
+
+  <!-- VIZ 5 -->
+  <section id="viz5" class="stop">
+    <div class="stop-header">
+      <span class="section-number">05 / Infrastructure</span>
+      <h2>Quelles infrastructures sont à risque ?</h2>
+      <p>La présence de feux de circulation et de passages piétons est associée à une fréquence d'accidents significativement plus élevée.</p>
+    </div>
+    <div class="viz-container">
+      <div class="btn-group">
+        <button data-v5-view="proportion" class="active">Proportion</button>
+        <button data-v5-view="odds">Odds ratio</button>
+      </div>
+      <div id="v5-wrap"></div>
+    </div>
+  </section>
+
+
+  <!-- CREDITS -->
+  <section id="credits" class="stop">
+    <div class="stop-header">
+      <span class="section-number">Équipe 2 · INF8808</span>
+      <h2>Crédits</h2>
+      <p>Un travail effectué dans le cadre du cours INF8808.</p>
+    </div>
+    <div class="credits-grid">
+      <div class="credit-card">
+        <span class="credit-name">Abdelaziz, Sefeldin</span>
+      </div>
+      <div class="credit-card">
+        <span class="credit-name">Belhouala, Omar-Rayan</span>
+      </div>
+      <div class="credit-card">
+        <span class="credit-name">Dadi, Yusuf-Islam</span>
+      </div>
+      <div class="credit-card">
+        <span class="credit-name">Ghadban, Peter</span>
+      </div>
+      <div class="credit-card">
+        <span class="credit-name">Jabbour, Paul</span>
+      </div>
+      <div class="credit-card">
+        <span class="credit-name">Khamlichi, Adam</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/scrollytelling.js" defer></script>
+
+<script type="module">
+  import { renderViz1 } from "./d3/viz1_temporal.js";
+  import { renderViz2 } from "./d3/viz2_weekhour.js";
+  import { renderViz3 } from "./d3/viz3_states.js";
+  import { renderViz4 } from "./d3/viz4_weather.js";
+  import { renderViz5 } from "./d3/viz5_infrastructure.js";
+
+  const rendered = new Set();
+
+  const renderMap = {
+    viz1: () => renderViz1(document.getElementById("viz1")),
+    viz2: () => renderViz2(document.getElementById("viz2")),
+    viz3: () => renderViz3(document.getElementById("viz3")),
+    viz4: () => renderViz4(document.getElementById("viz4")),
+    viz5: () => renderViz5(document.getElementById("viz5")),
+  };
+
+  const vizObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !rendered.has(entry.target.id)) {
+        rendered.add(entry.target.id);
+        renderMap[entry.target.id]?.();
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('#viz1, #viz2, #viz3, #viz4, #viz5').forEach(s => vizObserver.observe(s));
+</script>
+
+</body>
+</html>
