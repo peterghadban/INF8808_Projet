@@ -228,7 +228,8 @@ export async function renderViz4(container) {
       .attr("y", H + margin.bottom - 4)
       .attr("text-anchor", "end")
       .attr("font-size", 10)
-      .attr("fill", "#888");
+      .attr("fill", "#888")
+      .text("Les températures sont en degrés Fahrenheit.");
   }
 
   // ── Tab switching ──────────────────────────────────────────────────────────
