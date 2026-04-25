@@ -228,8 +228,7 @@ export async function renderViz4(container) {
       .attr("y", H + margin.bottom - 4)
       .attr("text-anchor", "end")
       .attr("font-size", 10)
-      .attr("fill", "#888")
-      .text("Un écart entre les deux courbes indique un effet réel de la température sur les accidents.");
+      .attr("fill", "#888");
   }
 
   // ── Tab switching ──────────────────────────────────────────────────────────
